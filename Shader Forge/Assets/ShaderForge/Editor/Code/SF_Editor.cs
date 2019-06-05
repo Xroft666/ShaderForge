@@ -1890,7 +1890,7 @@ namespace ShaderForge {
 		public void OpenLoadDialog(){
 			string path = EditorUtility.OpenFilePanel(
 							"Load Shader",
-							"Assets",
+							"Assets/Shaders",
 							"shader"
 						);
 
@@ -1951,16 +1951,14 @@ namespace ShaderForge {
 				return false;
 			}
 
-			string presetPath = GetShaderPresetPath( preset );
-			StreamReader presetReader = new StreamReader( Application.dataPath + presetPath.Substring( 6 ) );
+			string presetPath = GetShaderPresetPath(preset);
+
+            var packagesPath = Application.dataPath;
+            packagesPath = packagesPath.Substring(0, packagesPath.Length - 6);
+            var presetReader = new StreamReader(packagesPath + presetPath);
 
 			// So we now have the path to save it, let's save
-			StreamWriter sw;
-			if( !File.Exists( savePath ) ) {
-				sw = File.CreateText( savePath );
-			} else {
-				sw = new StreamWriter(savePath);
-			}
+			var sw = !File.Exists(savePath) ? File.CreateText(savePath) : new StreamWriter(savePath);
 
 			// Read from preset
 			string[] presetLines = presetReader.ReadToEnd().Split( '\n' );
