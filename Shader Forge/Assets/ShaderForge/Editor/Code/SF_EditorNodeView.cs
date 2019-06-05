@@ -288,7 +288,7 @@ namespace ShaderForge {
 
 
 
-			if(Event.current.type == EventType.repaint){
+			if(Event.current.type == EventType.Repaint){
 				nodeSpaceMousePos = ScreenSpaceToZoomSpace( Event.current.mousePosition );
 
 			}
@@ -308,7 +308,7 @@ namespace ShaderForge {
 				if(editor.nodeView != null)
 					editor.nodeView.selection.DrawBoxSelection();
 
-				if(Event.current.type == EventType.repaint){
+				if(Event.current.type == EventType.Repaint){
 					viewSpaceMousePos = ZoomSpaceToScreenSpace( Event.current.mousePosition );
 				}
 				// NODES
@@ -335,7 +335,7 @@ namespace ShaderForge {
 						}
 					}
 
-					if( Event.current.type == EventType.repaint ) {
+					if( Event.current.type == EventType.Repaint ) {
 						for( int i=0; i < editor.nodes.Count; i++ )
 							editor.nodes[i].DrawConnectors();
 					}
@@ -422,7 +422,7 @@ namespace ShaderForge {
 				//}
 			}
 
-			if( Event.current.type == EventType.dragUpdated && Event.current.type != EventType.DragPerform ) {
+			if( Event.current.type == EventType.DragUpdated && Event.current.type != EventType.DragPerform ) {
 				if( DragAndDrop.objectReferences.Length > 0 ) {
 					Object dragObj = DragAndDrop.objectReferences[0];
 					if( dragObj is Texture2D || /*dragObj is ProceduralTexture ||*/ dragObj is RenderTexture  ) {
@@ -449,7 +449,7 @@ namespace ShaderForge {
 
 
 			// If release
-			if( MouseInsideNodeView( false ) && Event.current.type == EventType.mouseUp) {
+			if( MouseInsideNodeView( false ) && Event.current.type == EventType.MouseUp) {
 				bool ifCursorStayed = Vector2.SqrMagnitude( mousePosStart - Event.current.mousePosition ) < SF_Tools.stationaryCursorRadius;
 
 				if( ifCursorStayed && !SF_GUI.MultiSelectModifierHeld() )
@@ -464,7 +464,7 @@ namespace ShaderForge {
 			}
 
 			// If press
-			if( Event.current.type == EventType.mouseDown && MouseInsideNodeView( false ) ) {
+			if( Event.current.type == EventType.MouseDown && MouseInsideNodeView( false ) ) {
 				//bool ifNotHoldingModifier = !SF_GUI.MultiSelectModifierHeld();
 				mousePosStart = Event.current.mousePosition;
 				editor.Defocus();
@@ -546,7 +546,7 @@ namespace ShaderForge {
 
 		public void UpdateCutLine(){
 
-			if(SF_GUI.HoldingAlt() && Event.current.type == EventType.mouseDown && Event.current.button == 1){ // Alt + RMB drag
+			if(SF_GUI.HoldingAlt() && Event.current.type == EventType.MouseDown && Event.current.button == 1){ // Alt + RMB drag
 				StartCutting();
 			} else if(SF_GUI.ReleasedRawRMB()){
 				StopCutting();
@@ -647,7 +647,7 @@ namespace ShaderForge {
 
 		public void UpdateDebugInput() {
 
-			if( Event.current.type != EventType.keyDown )
+			if( Event.current.type != EventType.KeyDown )
 				return;
 
 			if( Event.current.keyCode == KeyCode.UpArrow ) {
