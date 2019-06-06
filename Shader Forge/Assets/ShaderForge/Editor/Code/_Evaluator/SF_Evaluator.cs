@@ -3207,7 +3207,7 @@ namespace ShaderForge {
 			if( SF_Debug.evalFlow )
 				Debug.Log( "SHADER EVALUATING" );
 
-			editor.ps.fChecker.UpdateAvailability();
+			//editor.ps.fChecker.UpdateAvailability();
 			if( !editor.nodeView.treeStatus.CheckCanCompile() ) {
 				return;
 			}
